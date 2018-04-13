@@ -1,0 +1,38 @@
+
+<div class="container">
+    <h2>Book List</h2>
+   
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>In Cart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.genre }}</td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.in_cart }}</td>
+          <td><a [routerLink]="['/book-details',book._id]" class="btn btn-sm btn-default">Show Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class="container">
+    <h3>SEARCH</h3>
+    
+    <select #criteria>
+        <option value="genre"> Category</option>
+        <option value="author">Author</option>
+        <option value="title">Title</option>
+      </select>
+      <input type="text" #value>
+    <button class="btn btn-default" type="button" (click)="search(criteria,value)" >Search</button>
+  </div>

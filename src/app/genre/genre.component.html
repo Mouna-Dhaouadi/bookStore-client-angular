@@ -1,0 +1,27 @@
+
+<div class="container">
+  <h2>Category List</h2>
+  <label>Add a category</label>
+
+<input 
+(keyup.enter)="createGenre(title)" #title
+ type="text" class="form-control">
+
+ 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genre of genres">
+        <td>{{ genre.title }}</td>
+        <td><button class="btn btn-sm btn-default"><a [routerLink]="['/genre-update', genre._id]">Update</a></button></td>
+        <td><button (click)="deleteGenre(genre)" class="btn btn-sm btn-default">Delete</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

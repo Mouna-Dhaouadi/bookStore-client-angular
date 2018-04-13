@@ -1,0 +1,38 @@
+
+<div class="container">
+    <h2>Cart Book List</h2>
+   
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Show Details</th>
+          <th>Delete from Cart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.genre }}</td>
+          <td>{{ book.price }}</td>
+          <td><a [routerLink]="['/book-details',book._id]" class="btn btn-sm btn-default">Show Details</a></td>
+
+          <td><a (click)="deleteFromCart(book)" class="btn btn-sm btn-default">Delete From Cart</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+        <h3>
+          Total Price :{{total_price}}
+        </h3> 
+      
+      </div>
+
+  </div>
+
+ 

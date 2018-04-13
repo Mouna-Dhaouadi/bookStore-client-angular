@@ -1,0 +1,32 @@
+<div class="container">
+<div class="row">
+  <div class=" col-md-4">
+      <h2>{{ book.title }}</h2>
+
+    <dl class="list">
+      
+      <dt>Author</dt>
+      <dd>{{ book.author }}</dd>
+      <dt>Publisher</dt>
+      <dd>{{ book.publisher }}</dd>
+      <dt>Price</dt>
+      <dd>{{ book.price }}</dd>
+      <dt>Description</dt>
+      <dd>{{ book.description }}</dd>
+    </dl>
+  </div>
+    <div class="col-md-6">
+        <img src={{book.image_url}} />
+
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+  
+      <div class="col-md-12">
+        <a [routerLink]="['/book-edit', book._id]" class="btn btn-default">EDIT</a>
+        <button class="btn btn-default" type="button" (click)="deleteBook(book._id)">DELETE</button>
+        <button class="btn btn-default" type="button" (click)="addToCart(book._id)" [disabled]=book.in_cart>ADD TO CART</button>
+      </div>
+    </div>
