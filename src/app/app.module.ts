@@ -13,9 +13,17 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { GenreUpdateComponent } from './genre-update/genre-update.component';
 import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from "./auth.guard";
 
 
 const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+
+  },
   {
     path: 'books',
     component: BooksComponent,
@@ -24,7 +32,8 @@ const appRoutes: Routes = [
   {
     path: 'book-details/:id',
     component: BookDetailComponent,
-    data: { title: 'Book Details' }
+    data: { title: 'Book Details' },
+    canActivate: [AuthGuard]
   },
   { path: '',
     redirectTo: '/books',
@@ -33,27 +42,32 @@ const appRoutes: Routes = [
   {
     path: 'book-create',
     component: BookCreateComponent,
-    data: { title: 'Create Book' }
+    data: { title: 'Create Book' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'cart',
     component: CartComponent,
-    data: { title: 'Books In Cart' }
+    data: { title: 'Books In Cart' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'book-edit/:id',
     component: BookEditComponent,
-    data: { title: 'Edit Book' }
+    data: { title: 'Edit Book' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'genres',
     component: GenreComponent,
-    data: { title: 'Genre List' }
+    data: { title: 'Genre List' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'genre-update/:id',
     component: GenreUpdateComponent,
-    data: { title: 'Edit Category' }
+    data: { title: 'Edit Category' },
+    canActivate: [AuthGuard]
   },
 ];
 
@@ -67,7 +81,8 @@ const appRoutes: Routes = [
     BookCreateComponent,
     BookEditComponent,
     GenreUpdateComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +95,8 @@ const appRoutes: Routes = [
   ],
   providers: [
    // BooksService //for dependecy injection
+   AuthService,
+   AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
